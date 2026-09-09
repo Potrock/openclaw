@@ -61,7 +61,7 @@ completed video assets and result metadata. Video assets may contain buffers or
 provider-hosted URLs. Downloads after the call returns belong to the caller;
 registration disposal must not invalidate those completed artifacts.
 
-For `image_generate` and `music_generate` tools prepared from an owned inspection,
+For `image_generate`, `music_generate`, and `video_generate` tools prepared from an owned inspection,
 resources remain held through preflight and, once accepted, through generation, media saving, and
 any rollback. A `started` result acknowledges acceptance; it does not mean the
 work or cleanup has finished. If the original inspection retires during
