@@ -42,6 +42,7 @@ import { renderPluginDetailShell } from "./detail-shell.ts";
 import { buildInstalledPluginDetailTabs, type InstalledPluginDetailTab } from "./detail-tabs.ts";
 import { renderPluginOfficialBadge, renderPluginStateStatus } from "./plugin-card.ts";
 import { pluginRowKey, type PluginRowMessage } from "./plugin-row-message.ts";
+import { renderPluginSecurityAudit } from "./security-audit.ts";
 import { renderPluginLifecycle } from "./settings-lifecycle.ts";
 import { pluginEntryValue } from "./settings-model.ts";
 
@@ -603,15 +604,7 @@ export function renderPluginSettingsDetail(props: DetailProps): TemplateResult {
         </dl>
         ${
           catalog.detail.security
-            ? html`<a
-                class="plugin-catalog-detail__security"
-                href=${packageUrl ? `${packageUrl}/security-audit` : nothing}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <h2>${t("pluginsPage.detailSecurity")} ${icons.info}</h2>
-                <strong>${catalog.detail.security.status}</strong>
-              </a>`
+            ? renderPluginSecurityAudit(catalog.detail.security.status, packageUrl)
             : nothing
         }
         ${
